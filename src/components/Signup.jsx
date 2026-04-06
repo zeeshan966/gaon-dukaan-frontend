@@ -5,87 +5,114 @@ import { useNavigate, Link } from 'react-router-dom';
 export default function Signup() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
+      setError(null);
       await axios.post('https://gaon-dukaan-backend-2.onrender.com/api/auth/signup', formData);
-      alert("Account ban gaya! ✅ Ab Login karein.");
+      // Premium Success State (Optional: can use a toast here)
       navigate('/login');
     } catch (err) {
-      alert(err.response?.data?.message || "Signup fail ho gaya! ❌");
+      setError(err.response?.data?.message || "Signup fail ho gaya! ❌");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center px-6 py-10 selection:bg-blue-100">
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-400/5 blur-[100px] -z-10"></div>
+    <div className="min-h-[90vh] flex items-center justify-center px-6 py-12 selection:bg-blue-500/30">
+      
+      {/* Background Atmospheric Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-600/10 rounded-full blur-[120px] -z-10 animate-breath"></div>
 
-      <div className="w-full max-w-md bg-white border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.04)] rounded-[2rem] p-10 transition-all duration-500 hover:shadow-blue-500/5">
+      {/* Elite Glass Signup Card */}
+      <div className="w-full max-w-md bg-white/5 backdrop-blur-3xl border border-white/10 ring-1 ring-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] rounded-[2.5rem] p-10 md:p-12 transition-all duration-700 hover:border-white/20">
         
-        {/* Balanced Header Section */}
+        {/* Modern Auth Header */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mb-3">
-            Join the Revolution
+          <h2 className="text-4xl font-serif italic text-white/90 tracking-tight mb-2">
+            Join the <span className="font-sans font-black not-italic text-blue-400">Revolution</span>
           </h2>
-          <p className="text-slate-500 text-sm font-medium">
-            Apni dukan ko digital banayein aur gaon ko badhayein.
+          <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em]">
+            Digital Gaon, Empowered Bharat
           </p>
         </div>
 
+        {/* Premium Error UI */}
+        {error && (
+          <div className="mb-6 flex items-center gap-3 px-4 py-3 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-bold animate-in fade-in slide-in-from-top-2 duration-300">
+            <span>⚠️</span> {error}
+          </div>
+        )}
+
         <form onSubmit={handleSignup} className="space-y-6">
-          <div className="space-y-4">
-            {/* Medium Sized Inputs */}
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 ml-1">Full Name</label>
+          <div className="space-y-5">
+            
+            {/* Full Name Input */}
+            <div className="group">
+              <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-2 ml-2 group-focus-within:text-blue-400 transition-colors">
+                Full Name
+              </label>
               <input
                 type="text" 
-                placeholder="Full Name" 
+                placeholder="Zeeshan Ahmad" 
                 required
-                className="w-full p-4 rounded-xl border border-slate-100 bg-slate-50/50 text-base font-semibold text-slate-800 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-300 placeholder:font-normal"
+                className="w-full p-4 rounded-2xl border border-white/5 bg-white/5 text-base font-medium text-white placeholder:text-white/10 focus:bg-white/10 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-400/50 outline-none transition-all duration-300"
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
               />
             </div>
 
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 ml-1">Email Address</label>
+            {/* Email Address Input */}
+            <div className="group">
+              <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-2 ml-2 group-focus-within:text-blue-400 transition-colors">
+                Email Address
+              </label>
               <input
                 type="email" 
-                placeholder="naam@email.com" 
+                placeholder="admin@gaonyatru.com" 
                 required
-                className="w-full p-4 rounded-xl border border-slate-100 bg-slate-50/50 text-base font-semibold text-slate-800 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-300 placeholder:font-normal"
+                className="w-full p-4 rounded-2xl border border-white/5 bg-white/5 text-base font-medium text-white placeholder:text-white/10 focus:bg-white/10 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-400/50 outline-none transition-all duration-300"
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
               />
             </div>
 
-            <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 ml-1">Create Password</label>
+            {/* Password Input */}
+            <div className="group">
+              <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-2 ml-2 group-focus-within:text-blue-400 transition-colors">
+                Secret Password
+              </label>
               <input
                 type="password" 
-                placeholder="Create Strong Password" 
+                placeholder="••••••••" 
                 required
-                className="w-full p-4 rounded-xl border border-slate-100 bg-slate-50/50 text-base font-semibold text-slate-800 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-300 placeholder:font-normal"
+                className="w-full p-4 rounded-2xl border border-white/5 bg-white/5 text-base font-medium text-white placeholder:text-white/10 focus:bg-white/10 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-400/50 outline-none transition-all duration-300"
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
               />
             </div>
           </div>
 
-          {/* Premium Submit Button */}
-          <div className="pt-2">
+          {/* Premium Launch Button with Shine Sweep */}
+          <div className="pt-4">
             <button
               disabled={loading}
-              className="relative w-full py-4 bg-slate-900 rounded-xl font-bold text-base text-white overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.98] disabled:opacity-50 group"
+              className="group relative w-full py-4 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl font-black text-xs uppercase tracking-[0.2em] text-white overflow-hidden transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(37,99,235,0.6)] hover:scale-[1.02] active:scale-95 disabled:opacity-50"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <span className="relative z-10 flex items-center justify-center gap-2">
+              {/* Shine Sweep Effect */}
+              <div className="absolute inset-0 z-0 group-hover:animate-shine-sweep">
+                <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg]" />
+              </div>
+
+              <span className="relative z-10 flex items-center justify-center gap-3">
                 {loading ? (
                   <>
-                    <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
                     Creating Account...
                   </>
                 ) : (
@@ -96,11 +123,11 @@ export default function Signup() {
           </div>
         </form>
 
-        {/* Footer Link */}
-        <div className="mt-8 pt-8 border-t border-slate-50 text-center">
-          <p className="text-slate-400 text-sm font-medium">
+        {/* Clean Footer Link */}
+        <div className="mt-10 pt-8 border-t border-white/5 text-center">
+          <p className="text-white/30 text-xs font-bold uppercase tracking-widest">
             Pehle se account hai?{' '}
-            <Link to="/login" className="text-blue-600 font-bold hover:text-blue-700 transition-colors ml-1">
+            <Link to="/login" className="text-blue-400 font-black hover:text-blue-300 transition-all ml-1 hover:underline underline-offset-4">
               Login Karein
             </Link>
           </p>

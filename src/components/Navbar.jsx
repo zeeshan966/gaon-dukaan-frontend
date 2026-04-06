@@ -1,49 +1,177 @@
 import { Link } from 'react-router-dom';
 
+
+
+
+
+
+
 export default function Navbar() {
+
+
+
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-white/10 backdrop-blur-2xl transition-all duration-500 shadow-navbar ring-1 ring-white/5">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
-        
-        {/* Left Side: Logo Section with Spring Animation */}
-        <Link to="/" className="group flex items-center gap-4 transition-transform active:scale-95">
-          <div className="relative flex items-center justify-center rounded-2xl bg-white/5 p-2.5 shadow-inner transition-all duration-300 group-hover:bg-white/20 group-hover:shadow-xl group-hover:animate-[spring-bounce_0.5s_ease-out_forwards]">
-            <span className="text-2xl drop-shadow-md">🏠</span>
-            {/* Subtle glow behind icon */}
-            <div className="absolute inset-0 -z-10 rounded-2xl bg-blue-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+
+
+    <nav className="bg-blue-600/80 backdrop-blur-xl text-white p-4 shadow-[0_8px_32px_0_rgba(31,38,135,0.2)] border-b border-white/20 sticky top-0 z-50 transition-all duration-300">
+
+
+
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-2">
+
+
+
+       
+
+
+
+        {/* Left Side: Logo Section */}
+
+
+
+        <Link to="/" className="flex items-center gap-3 group cursor-pointer">
+
+
+
+          <div className="bg-white/20 p-2.5 rounded-2xl group-hover:bg-white/30 group-hover:rotate-12 transition-all duration-300 shadow-lg">
+
+
+
+            <span className="text-2xl">🏠</span>
+
+
+
           </div>
-          
-          <h1 className="bg-gradient-to-r from-slate-200 via-white to-slate-300 bg-clip-text text-xl font-black tracking-tight text-transparent md:text-2xl">
+
+
+
+          <h1 className="text-2xl font-black tracking-tighter bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent group-hover:scale-105 transition-transform">
+
+
+
             Gaon Shop Status
+
+
+
           </h1>
+
+
+
         </Link>
 
-        {/* Right Side: Elite Live Status Button */}
-        <div className="relative group cursor-pointer">
-          {/* Breathing Glow Effect */}
-          <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-emerald-500/50 to-cyan-500/50 blur-md opacity-20 transition duration-500 group-hover:opacity-60 group-hover:animate-pulse"></div>
-          
-          {/* Main Button Body - Refined Glass */}
-          <div className="relative flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md transition-all duration-300 group-hover:bg-white/10 group-hover:border-white/20 md:px-6 md:py-2.5">
-            
-            {/* Minimal Ping Indicator */}
-            <div className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40"></span>
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.8)]"></span>
+
+
+
+
+
+
+        {/* Right Side: Glowing Live Status Button */}
+
+
+
+        <div className="relative group">
+
+
+
+          {/* Outer Glow Effect */}
+
+
+
+          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+
+
+
+         
+
+
+
+          {/* Main Button Body */}
+
+
+
+          <div className="relative flex items-center gap-3 bg-white/10 border border-white/20 px-5 py-2.5 rounded-2xl shadow-2xl backdrop-blur-md">
+
+
+
+           
+
+
+
+            {/* Animated Ping Indicator */}
+
+
+
+            <div className="relative flex h-3 w-3">
+
+
+
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+
+
+
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-[0_0_10px_#10b981]"></span>
+
+
+
             </div>
 
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-emerald-50/90 md:text-[11px]">
+
+
+
+
+
+
+            <span className="text-[11px] font-black uppercase tracking-[0.2em] text-emerald-50 opacity-90">
+
+
+
               Live Status
+
+
+
             </span>
-            
-            {/* Sophisticated Shine Sweep */}
-            <div className="absolute inset-0 overflow-hidden rounded-xl">
-              <div className="absolute inset-0 w-full h-full -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 ease-in-out group-hover:translate-x-full"></div>
-            </div>
+
+
+
+           
+
+
+
+            {/* Hover Shine Effect */}
+
+
+
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+
+
+
           </div>
+
+
+
         </div>
 
+
+
+
+
+
+
       </div>
-    </nav>
+
+
+
+      </nav>
+
+
+
+   
+
+
+
   );
-}
+
+
+
+} 

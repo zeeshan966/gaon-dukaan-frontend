@@ -1,93 +1,405 @@
-import { useState } from 'react';
+import { useState } from 'react'
+
+
+
+
+
+
 
 export default function Dashboard() {
+
+
+
   const [isOpen, setIsOpen] = useState(true);
 
-  return (
-    <div className={`min-h-screen flex items-center justify-center transition-colors duration-1000 px-4 ${
-      isOpen ? 'bg-emerald-950/20' : 'bg-rose-950/20'
-    }`}>
-      
-      {/* Adaptive Glassmorphism Container */}
-      <div className={`relative w-full max-w-md p-10 rounded-[2.5rem] border backdrop-blur-3xl transition-all duration-700 shadow-2xl overflow-hidden ${
-        isOpen 
-          ? 'bg-white/5 border-emerald-500/20 shadow-emerald-500/10' 
-          : 'bg-white/5 border-rose-500/20 shadow-rose-500/10'
-      }`}>
 
-        {/* Dynamic Glow Atmosphere (Pulsating) */}
-        <div className={`absolute -top-24 -right-24 w-80 h-80 rounded-full blur-[100px] animate-breath transition-colors duration-1000 ${
-          isOpen ? 'bg-emerald-500/20' : 'bg-rose-500/20'
+
+
+
+
+
+  return (
+
+
+
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 via-white to-slate-200 px-4">
+
+
+
+     
+
+
+
+      <div className="relative w-full max-w-md rounded-3xl border border-white/40 bg-white/70 backdrop-blur-2xl shadow-2xl p-8 overflow-hidden">
+
+
+
+
+
+
+
+        {/* Glow Background */}
+
+
+
+        <div className={`absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl opacity-30 transition-all duration-700 ${
+
+
+
+          isOpen ? 'bg-emerald-400' : 'bg-rose-400'
+
+
+
         }`} />
 
-        <div className="relative z-10 flex flex-col items-center">
-          
-          {/* Header with Serif Typography */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif italic text-white/90 tracking-tight">
-              Shop <span className="font-sans font-black not-italic text-blue-400">Manager</span>
+
+
+
+
+
+
+        <div className="relative z-10">
+
+
+
+         
+
+
+
+          {/* Header */}
+
+
+
+          <div className="text-center mb-8">
+
+
+
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+
+
+
+              Shop Manager <span className="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">🛠️</span>
+
+
+
             </h2>
-            <p className="text-xs font-sans font-bold uppercase tracking-[0.3em] text-white/30 mt-3">
-              Real-time Status Control
+
+
+
+            <p className="text-sm text-gray-500 mt-1">
+
+
+
+              Control your shop status instantly
+
+
+
             </p>
+
+
+
           </div>
 
-          {/* Status Core Indicator (3D Glass Orb) */}
-          <div className="relative mb-12 group">
-            {/* Breathing Outer Ring */}
-            <div className={`absolute -inset-6 rounded-full blur-2xl animate-breath transition-colors duration-700 ${
-              isOpen ? 'bg-emerald-500/30' : 'bg-rose-500/30'
-            }`} />
-            
-            {/* The Orb */}
-            <div className={`relative w-28 h-28 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-all duration-700 transform group-hover:scale-110 ${
-              isOpen 
-                ? 'bg-[var(--bg-emerald-orb)] text-emerald-50 shadow-emerald-500/50 ring-4 ring-emerald-400/20' 
-                : 'bg-[var(--bg-rose-orb)] text-rose-50 shadow-rose-500/50 ring-4 ring-rose-400/20'
-            }`}>
-              <span className="drop-shadow-lg">{isOpen ? "✓" : "✕"}</span>
-              {/* Inner Glass Reflection */}
-              <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/20 to-transparent opacity-50" />
+
+
+
+
+
+
+          {/* Status Card */}
+
+
+
+          <div className="flex flex-col items-center gap-8">
+
+
+
+
+
+
+
+            {/* Glowing Status Indicator */}
+
+
+
+            <div className="relative flex items-center justify-center">
+
+
+
+             
+
+
+
+              {/* Outer Glow Ring */}
+
+
+
+              <div className={`absolute w-28 h-28 rounded-full blur-2xl opacity-40 ${
+
+
+
+                isOpen ? 'bg-emerald-400' : 'bg-rose-400'
+
+
+
+              }`} />
+
+
+
+
+
+
+
+              {/* Animated Pulse Ring */}
+
+
+
+              <div className={`absolute w-20 h-20 rounded-full ${
+
+
+
+                isOpen ? 'bg-emerald-400/30 animate-ping' : 'bg-rose-400/30 animate-ping'
+
+
+
+              }`} />
+
+
+
+
+
+
+
+              {/* Core Circle */}
+
+
+
+              <div className={`relative w-16 h-16 flex items-center justify-center rounded-full text-white text-xl font-bold shadow-lg transition-all duration-500 ${
+
+
+
+                isOpen
+
+
+
+                ? 'bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-emerald-300'
+
+
+
+                : 'bg-gradient-to-br from-rose-500 to-rose-600 shadow-rose-300'
+
+
+
+              }`}>
+
+
+
+                {isOpen ? "✔" : "✖"}
+
+
+
+              </div>
+
+
+
             </div>
-          </div>
 
-          {/* Status Text with Scale-up Effect */}
-          <div className={`mb-10 text-xs font-black uppercase tracking-[0.4em] px-8 py-3 rounded-full border transition-all duration-700 scale-100 hover:scale-110 ${
-            isOpen
-              ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20'
-              : 'text-rose-400 bg-rose-500/10 border-rose-500/20'
-          }`}>
-            {isOpen ? "Store is Open" : "Store is Closed"}
-          </div>
 
-          {/* Haptic-Feel Action Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`group relative w-full py-5 rounded-[1.8rem] font-sans font-black text-xs tracking-[0.2em] uppercase text-white transition-all duration-500 active:scale-95 overflow-hidden ${
+
+
+
+
+
+            {/* Status Text */}
+
+
+
+            <div className={`text-sm font-bold px-6 py-2 rounded-full uppercase tracking-widest border transition-all duration-500 ${
+
+
+
               isOpen
-                ? 'bg-gradient-to-r from-rose-600 to-rose-700 shadow-[0_10px_40px_-10px_rgba(244,63,94,0.5)] hover:shadow-rose-500/40'
-                : 'bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-[0_10px_40px_-10px_rgba(16,185,129,0.5)] hover:shadow-emerald-500/40'
-            }`}
-          >
-            <span className="relative z-10 flex items-center justify-center gap-3">
-              {isOpen ? "🚩 Close Shop" : "🚀 Open Shop"}
-            </span>
 
-            {/* High-Speed Shine Sweep */}
-            <div className="absolute inset-0 z-0">
-              <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] group-hover:animate-[shine_1s_ease-in-out_infinite]" />
+
+
+                ? 'text-emerald-600 bg-emerald-50 border-emerald-200'
+
+
+
+                : 'text-rose-600 bg-rose-50 border-rose-200'
+
+
+
+            }`}>
+
+
+
+              {isOpen ? "Abhi Khuli Hai" : "Abhi Band Hai"}
+
+
+
             </div>
-          </button>
 
-          {/* Footer Metadata */}
-          <div className="mt-10 flex flex-col items-center gap-2">
-            <div className="h-px w-12 bg-white/10" />
-            <p className="text-[9px] text-white/20 uppercase tracking-[0.5em] font-black">
-              System Verified: {new Date().toLocaleTimeString()}
+
+
+
+
+
+
+            {/* Action Button */}
+
+
+
+            <button
+
+
+
+              onClick={() => setIsOpen(!isOpen)}
+
+
+
+              className={`group relative w-full overflow-hidden py-4 rounded-2xl font-semibold text-white text-lg transition-all duration-300 active:scale-95 shadow-xl ${
+
+
+
+                isOpen
+
+
+
+                  ? 'bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 shadow-rose-300'
+
+
+
+                  : 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 shadow-emerald-300'
+
+
+
+              }`}
+
+
+
+            >
+
+
+
+              <span className="relative z-10 flex items-center justify-center gap-2">
+
+
+
+                {isOpen ? "🚩 Dukan Band Karein" : "🚀 Dukan Kholein"}
+
+
+
+              </span>
+
+
+
+
+
+
+
+              {/* Shine Effect */}
+
+
+
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
+
+
+
+                <div className="absolute -left-1/2 top-0 w-1/2 h-full bg-white/20 skew-x-[-20deg] animate-[shine_1s_ease]" />
+
+
+
+              </div>
+
+
+
+            </button>
+
+
+
+
+
+
+
+            {/* Footer */}
+
+
+
+            <p className="text-[11px] text-gray-400 uppercase tracking-widest font-semibold">
+
+
+
+              Last Updated: Just Now
+
+
+
             </p>
+
+
+
+
+
+
+
           </div>
+
+
+
         </div>
+
+
+
       </div>
+
+
+
+
+
+
+
+      {/* Custom Animation */}
+
+
+
+      <style>
+
+
+
+        {`
+
+
+
+          @keyframes shine {
+
+
+
+            0% { left: -50%; }
+
+
+
+            100% { left: 120%; }
+
+
+
+          }
+
+
+
+        `}
+
+
+
+      </style>
+
+
+
     </div>
-  );
+
+
+
+  )
+
+
+
 }

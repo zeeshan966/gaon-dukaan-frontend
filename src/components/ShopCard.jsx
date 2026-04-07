@@ -9,51 +9,60 @@ function ShopCard({ shop, onUpdate }) {
     isOpen: shop.isOpen 
   });
 
+  // --- 🟢 UPDATED HANDLE UPDATE ---
   const handleUpdate = async () => {
     const password = prompt("Update karne ke liye Admin Password dalo:");
-    if (password === "Gaon123") {
+    
+    // Ab ye .env se check karega
+    if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
       try {
         await axios.put(`https://gaon-dukaan-backend-2.onrender.com/api/shops/${shop._id}`, editData);
         setIsEditing(false);
         if (onUpdate) onUpdate();
-      } catch (error) { alert("Update fail!"); }
-    } else if (password !== null) alert("❌ Galat Password!");
+      } catch (error) { 
+        alert("Update fail!"); 
+      }
+    } else if (password !== null) {
+      alert("❌ Galat Password!");
+    }
   };
 
+  // --- 🟢 UPDATED HANDLE DELETE ---
   const handleDelete = async () => {
     const password = prompt("Dukan hatane ke liye Admin Password dalo:");
-    if (password === "Gaon123") {
+    
+    // Ab ye .env se check karega
+    if (password === import.meta.env.VITE_ADMIN_PASSWORD) {
       if (window.confirm(`Kya aap "${shop.name}" hataana chahte hain?`)) {
         try {
           await axios.delete(`https://gaon-dukaan-backend-2.onrender.com/api/shops/${shop._id}`);
           if (onUpdate) onUpdate(); 
-        } catch (error) { alert("Delete fail!"); }
+        } catch (error) { 
+          alert("Delete fail!"); 
+        }
       }
-    } else if (password !== null) alert("❌ Galat Password!");
+    } else if (password !== null) {
+      alert("❌ Galat Password!");
+    }
   };
 
   return (
     <div 
       tabIndex="0" 
       className="group relative p-[1px] rounded-[2.5rem] transition-all duration-500 outline-none
-                 /* Desktop Hover & Mobile Touch States */
                  hover:bg-gradient-to-br focus-within:bg-gradient-to-br active:bg-gradient-to-br
                  hover:from-blue-500 hover:via-purple-500 hover:to-pink-500 
                  focus-within:from-blue-600 focus-within:to-indigo-600
                  shadow-sm hover:shadow-[0_30px_70px_-10px_rgba(79,70,229,0.3)]
                  focus-within:shadow-[0_30px_70px_-10px_rgba(79,70,229,0.25)]"
     >
-      
-      {/* Main Glassy Container */}
       <div className="relative bg-white/95 backdrop-blur-3xl rounded-[2.4rem] p-7 md:p-8 h-full transition-all duration-500 
                       group-hover:-translate-y-2 group-focus-within:-translate-y-2 overflow-hidden border border-white/20">
         
-        {/* Animated Background Blob */}
         <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 blur-[50px] rounded-full 
                         group-hover:bg-purple-500/15 group-focus-within:bg-purple-500/15 transition-all duration-700"></div>
 
         {isEditing ? (
-          /* --- 📝 EDIT MODE --- */
           <div className="space-y-4 animate-in fade-in zoom-in-95 duration-300">
             <h4 className="text-[10px] font-black uppercase tracking-widest text-blue-600">Quick Edit</h4>
             <div className="space-y-3">
@@ -85,14 +94,11 @@ function ShopCard({ shop, onUpdate }) {
             </div>
           </div>
         ) : (
-          /* --- 👁️ DISPLAY MODE --- */
           <div className="flex flex-col h-full">
-            {/* Top Status & Category */}
             <div className="flex justify-between items-start mb-6">
               <span className="px-3 py-1 bg-slate-100 text-slate-500 rounded-lg text-[9px] font-black italic tracking-widest uppercase border border-slate-200/50">
                 {shop.category || "General"}
               </span>
-              
               <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition-all duration-500 ${
                 shop.isOpen ? "bg-emerald-50 border-emerald-100 text-emerald-600" : "bg-rose-50 border-rose-100 text-rose-600"
               }`}>
@@ -103,7 +109,6 @@ function ShopCard({ shop, onUpdate }) {
               </div>
             </div>
 
-            {/* Shop Info */}
             <div className="mb-6">
               <h3 className="text-2xl md:text-3xl font-black text-slate-800 tracking-tighter leading-tight italic 
                              group-hover:text-blue-600 group-focus-within:text-blue-600 transition-all duration-500">
@@ -119,7 +124,6 @@ function ShopCard({ shop, onUpdate }) {
               </div>
             </div>
 
-            {/* --- 🚀 FIXED ACTIONS AREA (Hamesha Visible) --- */}
             <div className="mt-auto pt-5 border-t border-slate-50 flex items-center justify-between transition-all duration-500">
               <button 
                 onClick={() => setIsEditing(true)}
